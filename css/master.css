@@ -1,0 +1,319 @@
+:root {
+  --pre: #fecd04;
+  --sec: #3d56a6;
+  --thr: #3ab54a;
+  --dark: #111;
+  --light: #fff;
+  --ani: 0.3s;
+  --text-s: 15px;
+  --text-l: 24px;
+  --text-b: 900;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  background-color: var(--light);
+  position: relative;
+}
+
+::selection {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.center-m {
+  margin: 0 auto
+}
+
+section {
+  overflow: hidden;
+}
+section.one {
+  background-color: var(--pre);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+section.one h1 {
+  background-color: transparent;
+  color: var(--dark);
+  font-weight: var(--text-b);
+  font-size: 60px;
+  position: relative;
+  text-align: center;
+}
+section.one h1::after {
+  content: "";
+  height: 100%;
+  background-color: var(--dark);
+  width: 4px;
+  position: absolute;
+  right: -5px;
+  top: 5px;
+  animation: typing 0.2s ease-in-out 0s infinite alternate;
+}
+
+a:has(.arrowIcon) {
+  position: absolute;
+  z-index: 999;
+  font-size: 50px;
+  color: var(--dark);
+  opacity: 0.8;
+  text-decoration: none;
+  animation: flashing 0.3s linear 0s infinite alternate;
+}
+
+section.one > a {
+  bottom: 15px;
+}
+
+@keyframes flashing {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  section.one h1 {
+    font-size: 40px;
+    padding: 0 10px;
+  }
+  section.one h1::after {
+    display: none;
+  }
+}
+/*================= section two ===================*/
+section.two {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--light);
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+section.two p {
+  margin: 0 auto;
+  padding-top: 30px;
+  width: 80%;
+  height: fit-content;
+  font-size: var(--text-l);
+}
+section.two div {
+  flex: 1;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.two div img {
+  height: 90%;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  section.two div img {
+    padding: 0 15px;
+    padding-top: 20px;
+  }
+}
+
+/*=================================================*/
+.part {
+  background-color: var(--sec);
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  border-bottom: 5px solid var(--pre);
+}
+.part::before {
+  content: attr(data-nb);
+  background-color: var(--thr);
+  color: var(--light);
+  width: 50px;
+  height: 100px;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: var(--text-b);
+}
+.part::after {
+  content: "";
+  border: 25px solid var(--thr);
+  border-bottom-color: transparent;
+  position: absolute;
+  left: 30px;
+  top: 75px;
+}
+
+.part .title {
+  flex: 2;
+  padding: 10px;
+  padding-left: 100px;
+  color: var(--light);
+  padding-bottom: 25px;
+}
+
+.part .title h2 {
+  font-size: calc(var(--text-l) * 1.5);
+}
+
+.part .title p {
+  padding-left: 15px;
+}
+
+.part .cards {
+  flex: 8;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.part .cards .card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  height: max-content;
+  max-width: 415px;
+}
+.part .cards .card img {
+  width: 100%;
+}
+.part .cards .card p {
+  position: absolute;
+  left: 100%;
+  opacity: 0;
+  top: 0;
+  background-color: var(--light);
+  color: var(--dark);
+  border: 5px solid var(--pre);
+  font-size: var(--text-s);
+  line-height: 1.6;
+  font-weight: calc(var(--text-b) - 200);
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  transition: var(--ani) ease-in-out;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.part .cards .card:hover p {
+  left: 0;
+  opacity: 1;
+}
+
+section.two > a,
+.part > a {
+  right: 30px;
+  bottom: 10px;
+}
+
+
+.part > a {
+  color: var(--light);
+  position: relative;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+button.showV {
+  background-color: var(--thr);
+  color: var(--light);
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--ani);
+}
+button.showV:hover {
+  filter: brightness(70%);
+}
+
+
+.video {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111111b6;
+  display: none;
+}
+.video > video {
+  width: 65%;
+}
+
+.video #close {
+  position: absolute;
+  color: var(--light);
+  z-index: 9;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: var(--ani);
+}
+
+.video #close:hover {
+  transform: rotate(0.5turn);
+}
+
+footer {
+  background-color: var(--pre);
+  color: var(--dark);
+  position: relative;
+  border-bottom: 5px solid var(--thr);
+  padding: 10px;
+  line-height: 1.8;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .part > a {
+    position: relative;
+    left: 85%;
+    bottom: 0;
+  }
+}
